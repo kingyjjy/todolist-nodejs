@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center">
+    <img src="images/memo.png" alt="logo" class="logo">
+    <h1>{{title}}</h1>
+    <img src="images/memo.png" alt="logo" class="logo">
+</div>
+<div class="todolist my-5 mx-auto w-75 border shadow-lg">
+    <div class="text-end me-5 mt-3">
+        <a href="/write"><i class="fa-regular fa-square-plus"></i></a>
+    </div>
+    <!-- loop -->
+    {% for rs in row %}
+    <div class="border-bottom d-flex justify-content-between mx-5 mt-4 mb-5">   
+        <div class="todocontent">
+            <p class="ps-4">{{rs.content}}</p>
+        </div>
+        <div>
+            <a href="./edit/{{rs.id}}"  class="btn"><i class="fa-regular fa-pen-to-square"></i></a>
+            <a href="#" data-id={{rs.id}} class="btn remove"><i class="fa-solid fa-xmark"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- /loop -->
+</div>
+{% endblock%}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    const rm = document.querySelectorAll('.remove');
+        rm.forEach((el, index)=>{
+            el.addEventListener('click', function(e){ 
+                e.preventDefault();
+                const id = this.dataset.id;
+                if(confirm('정말로 삭제하십니까?')){
+                    axios.post('/del', {
+                        id:id,
+                    })
+                    .then(function(res){
+                        console.log(res);
+                        if(res.data == 1){
+                            alert('삭제되었습니다.');
+                            // document.location.replace();
+                            window.location.reload(true);
+                        }
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    })
+
+                }
+                
+                
+            });
+        });
+</script>
+
+{% endblock %}

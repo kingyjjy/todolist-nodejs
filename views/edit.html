@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form name="form" action="/edit?_method=PUT" id="form" method="POST" enctype="multipart/form-data">
+    <div class="d-flex justify-content-center">
+        <img src="/images/memo.png" alt="logo" class="logo">
+        <h1>{{title}}</h1>
+        <img src="/images/memo.png" alt="logo" class="logo">
+    </div>
+    <!-- loop -->
+    <div class="todolist mt-5 mx-auto w-75 border shadow-lg">
+        <div class="text-end me-5 mt-3">
+            <a href="/"><i class="fa-solid fa-list"></i></a>
+        </div>
+        <div class="todowrite mx-5 mb-5 mt-3">
+            <label for="write" class="d-block mb-3">메모 작성</label>
+            <textarea name="write" id="write" cols="30" rows="5" class="form-control">{{rs.content}}</textarea>
+        </div>
+        <div class="d-flex justify-content-center mb-5">
+            <button type="submit"  class="btn btn-lg btn-outline-warning ">수 정</button>
+        </div>
+    </div>
+    <!-- /loop -->
+    <input type="hidden" name="id" value="{{rs.id}}">
+</form>
+{% endblock %}
