@@ -14,8 +14,8 @@
 <br/><br/>
 
 ## 📢소개📢
-slick-css, html, css, javascript, jquery등을 사용해 간단한 햄버거가게 온라인주문 어플을 만들어 보았습니다. <br/>
-이미지는 저작권으로 깨져있는점 양해부탁드립니다..
+nodejs기반으로 만들어 mongodb로 연결된 todo list-web입니다.<br/>
+crud가 가능합니다.
 
 
 ## 🔎How to🔎
